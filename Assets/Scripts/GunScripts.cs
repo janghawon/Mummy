@@ -27,8 +27,5 @@ public class GunScripts : MonoBehaviour
         audioSource.Play();
     }
 
-    private void Normal_Movement()
-    {
-
-    }
+    
 }

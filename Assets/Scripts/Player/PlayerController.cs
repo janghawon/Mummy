@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Input KeyCodes")]
     [SerializeField] private KeyCode RunKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode JumKey = KeyCode.Space;
 
     private RotationMouse rotationMouse;
     private PlayerMoveController movement;
@@ -25,6 +26,15 @@ public class PlayerController : MonoBehaviour
     {
         UpdateRotate();
         UpdateMove();
+        UpdateJump();
+    }
+
+    private void UpdateJump()
+    {
+        if(Input.GetKeyDown(JumKey))
+        {
+            movement.Jump();
+        }
     }
 
     private void UpdateMove()

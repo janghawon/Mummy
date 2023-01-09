@@ -8,6 +8,9 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Vector3 moveForce;
 
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float gravity;
+
     public float MoveSpeed
     {
         set => moveSpeed = Mathf.Max(0, value);
@@ -22,11 +25,23 @@ public class PlayerMoveController : MonoBehaviour
     }
     private void Update()
     {
+        if(!characterController.isGrounded)
+        {
+            moveForce.y += gravity * Time.deltaTime;
+        }
+
         characterController.Move(moveForce * Time.deltaTime);
     }
     public void MoveTo(Vector3 direction)
     {
         direction = transform.rotation * new Vector3(direction.x, 0, direction.z);
         moveForce = new Vector3(direction.x * moveSpeed, moveForce.y, direction.z * moveSpeed);
+    }
+    public void Jump()
+    {
+        if(characterController.isGrounded)
+        {
+            moveForce.y = jumpForce;
+        }
     }
 }
