@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GunScripts : MonoBehaviour
 {
     
     [SerializeField] private List<AudioClip> audioClipList = new List<AudioClip>();
     [SerializeField] private AudioSource audioSource;
+
+    public bool normalState;
 
     private void Awake()
     {
@@ -22,5 +25,10 @@ public class GunScripts : MonoBehaviour
         audioSource.Stop();
         audioSource.clip = sound;
         audioSource.Play();
+    }
+
+    private void Normal_Movement()
+    {
+
     }
 }
