@@ -270,6 +270,8 @@ GameObject:
   - component: {fileID: 8445401694593213622}
   - component: {fileID: 8795906849298310680}
   - component: {fileID: 5777116112367830324}
+  - component: {fileID: 1005483821}
+  - component: {fileID: 1692816052313217353}
   m_Layer: 0
   m_Name: P_LPSP_WEP_AR_01
   m_TagString: Untagged
@@ -312,6 +314,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 46ab8140c8747bc4099f7a36ced5a006, type: 3}
   - {fileID: 8300000, guid: 8c4ede782a70c6e4b9e515d40d6e6e69, type: 3}
   audioSource: {fileID: 0}
+  normalState: 0
 --- !u!82 &5777116112367830324
 AudioSource:
   m_ObjectHideFlags: 0
@@ -408,6 +411,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1005483821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445401694592989334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04048fcfb2958374d955a6019e433c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletCount: 0
+--- !u!114 &1692816052313217353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8445401694592989334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178b57deafe06904d9ee82b50ba31666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 0}
+  ParticlePrefab: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1,
+    type: 3}
 --- !u!1 &8445401694592989336
 GameObject:
   m_ObjectHideFlags: 0

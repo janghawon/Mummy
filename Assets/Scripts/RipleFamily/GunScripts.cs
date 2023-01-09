@@ -10,20 +10,22 @@ public class GunScripts : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     public bool normalState;
-
+    
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        
     }
     private void OnEnable()
     {
-        PlaySound(audioClipList[1]);
+        PlaySound(1);
     }
 
-    private void PlaySound(AudioClip sound)
+    public void PlaySound(int soundNum)
     {
-        audioSource.Stop();
-        audioSource.clip = sound;
+
+        //audioSource.Stop();
+        audioSource.clip = audioClipList[soundNum];
         audioSource.Play();
     }
 
