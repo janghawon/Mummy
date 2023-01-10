@@ -20,7 +20,7 @@ public class AfterImage : MonoBehaviour
     public void MakeAfterImage()
     {
         RipleHeadPos = gameObject.GetComponent<Transform>().position;
-        TargetPos = launch.LaunchBullet();
+        TargetPos = launch.PosReturn();
 
         GameObject launchEffect = Instantiate(launchEffectPrefab, RipleHeadPos, Quaternion.LookRotation(RipleHeadPos.normalized));
         Destroy(launchEffect, 1f);
@@ -33,7 +33,7 @@ public class AfterImage : MonoBehaviour
     {
         line.material.color = new Color(0.7f, 0.7f, 0.7f, 1);
         line.material.ToFadeMode();
-        for (float f = 1; f > 0; f -= 0.005f)
+        for (float f = 1; f > 0; f -= 0.02f)
         {
             Color color = line.material.color;
             

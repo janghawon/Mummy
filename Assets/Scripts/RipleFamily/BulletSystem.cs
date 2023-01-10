@@ -41,6 +41,7 @@ public class BulletSystem : MonoBehaviour
     {
         if(bulletCount > 0 && canAtk)
         {
+            
             bulletCount--;
             bulletCountText.text = bulletCount.ToString() + " / 10";
             launchSystem.LaunchBullet();

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
+    public Collider[] detectedColls;
     MeshRenderer meshRenderer;
     public GameObject explosionEffectPrefab;
     public GameObject fireEffectPrefab;
@@ -30,6 +31,7 @@ public class Grenade : MonoBehaviour
 
             explosionEffect.transform.position = this.transform.position;
             fireEffect.transform.position = this.transform.position;
+            CalDamage(80f);
             meshRenderer.enabled = false;
             Destroy(this.gameObject, 2f);
         }
@@ -44,7 +46,21 @@ public class Grenade : MonoBehaviour
 
         explosionEffect.transform.position = this.transform.position;
         airExplosionEffect.transform.position = this.transform.position;
+        CalDamage(100f);
         meshRenderer.enabled = false;
         Destroy(this.gameObject, 2f);
+    }
+    private void CalDamage(float damage)
+    {
+        detectedColls = Physics.OverlapSphere(this.transform.position, 10f); //Àû °¨Áö
+        Debug.Log("¿¨?");
+        foreach(Collider target in detectedColls)
+        {
+            if(target.gameObject.GetComponent<EnemyBase>())
+            {
+                EnemyBase targetEnemy = target.GetComponent<EnemyBase>();
+                targetEnemy.GetDamage(damage);
+            }
+        }
     }
 }

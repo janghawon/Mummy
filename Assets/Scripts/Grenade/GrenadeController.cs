@@ -17,6 +17,7 @@ public class GrenadeController : MonoBehaviour
         coolTime = FindObjectOfType<GrenadeCool>();
         soundManager = GameObject.Find("PlayerSoundManager").GetComponent<PlayerSoundManager>();
         canThrow = true;
+        
     }
     void Update()
     {
@@ -41,6 +42,5 @@ public class GrenadeController : MonoBehaviour
         rigid.AddForce( Camera.main.transform.forward * 30, ForceMode.Impulse);
         soundManager.PlaySound(0);
         yield return new WaitForSeconds(5f);
-        
     }
 }
