@@ -19,7 +19,7 @@ public class EnemyBase : MonoBehaviour
     private void SetHpBar()
     {
         enemyHpBarCanvas = transform.Find("EnemyHpCanvas").GetComponent<Canvas>();
-        GameObject hpBar = Instantiate<GameObject>(HPPrefab, enemyHpBarCanvas.transform);
+        GameObject hpBar = Instantiate(HPPrefab, enemyHpBarCanvas.transform);
 
         var _hpBar = hpBar.GetComponent<EnemyHP>();
         _hpBar.enemyTransform = this.gameObject.transform;

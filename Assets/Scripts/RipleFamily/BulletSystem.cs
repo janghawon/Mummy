@@ -11,13 +11,14 @@ public class BulletSystem : MonoBehaviour
     TextMeshProUGUI bulletCountText;
     public int bulletCount;
     bool canAtk;
-
+    public float atkCool;
     private void Awake()
     {
         afterImage = FindObjectOfType<AfterImage>();
         launchSystem = GetComponent<LaunchSystem>();
         bulletCountText = GameObject.Find("BulletCount").GetComponent<TextMeshProUGUI>();
         gun = GetComponent<GunSoundContainer>();
+        atkCool = 0.5f;
     }
     private void Start()
     {
@@ -54,7 +55,7 @@ public class BulletSystem : MonoBehaviour
     IEnumerator AttackCool()
     {
         canAtk = false;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(atkCool);
         canAtk = true;
     }
     public void ReLoad()
