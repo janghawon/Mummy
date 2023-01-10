@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSound : MonoBehaviour
+public class PlayerWalkSound : MonoBehaviour
 {
     [SerializeField]
     public AudioSource playerAudio;
@@ -12,9 +12,9 @@ public class PlayerSound : MonoBehaviour
     {
         playerAudio = GetComponent<AudioSource>();
     }
-
     
-    public void PlaySound(int soundNum)
+    
+    public void PlaySoundLong(int soundNum)
     {
 
         playerAudio.clip = playerAudioContainer[soundNum];

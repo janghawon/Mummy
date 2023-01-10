@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class GunScripts : MonoBehaviour
+public class GunSoundContainer : MonoBehaviour
 {
     
     [SerializeField] private List<AudioClip> audioClipList = new List<AudioClip>();

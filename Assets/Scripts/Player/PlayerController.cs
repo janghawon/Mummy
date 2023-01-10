@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private RotationMouse rotationMouse;
     private PlayerMoveController movement;
     private Status status;
-    PlayerSound playerSound;
+    PlayerWalkSound playerSound;
     private void Awake()
     {
         Cursor.visible = false;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         rotationMouse = GetComponent<RotationMouse>();
         movement = GetComponent<PlayerMoveController>();
         status = GetComponent<Status>();
-        playerSound = GetComponent<PlayerSound>();
+        playerSound = GetComponent<PlayerWalkSound>();
     }
     private void Update()
     {
@@ -55,11 +55,11 @@ public class PlayerController : MonoBehaviour
             
             if(isRun)
             {
-                playerSound.PlaySound(1);
+                playerSound.PlaySoundLong(1);
             }
             else if(!isRun)
             {
-                playerSound.PlaySound(0);
+                playerSound.PlaySoundLong(0);
             }
         }
         else

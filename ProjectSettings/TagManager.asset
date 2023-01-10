@@ -16,14 +16,15 @@ TagManager:
   - Wood (Static)
   - Dirt (Static)
   - Wood
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Boom
   - 
   - Wall
   - First Person View
