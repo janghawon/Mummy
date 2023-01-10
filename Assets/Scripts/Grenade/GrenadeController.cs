@@ -10,9 +10,11 @@ public class GrenadeController : MonoBehaviour
     public bool canThrow;
     Vector3 throwSpeed = new Vector3(0, 200, 2000);
     public PlayerSoundManager soundManager;
+    GrenadeCool coolTime;
 
     private void Start()
     {
+        coolTime = FindObjectOfType<GrenadeCool>();
         soundManager = GameObject.Find("PlayerSoundManager").GetComponent<PlayerSoundManager>();
         canThrow = true;
     }
@@ -21,12 +23,13 @@ public class GrenadeController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.F) && canThrow)
         {
             StartCoroutine(ThrowGrenade());
+            coolTime.StartCountCoolMethod();
         }
     }
     IEnumerator ThrowGrenade()
     {
-        canThrow = false;
 
+        canThrow = false;
         GameObject grenade = Instantiate(grenadePrefab);
         grenade.transform.position = Camera.main.transform.position;
         rigid = grenade.GetComponent<Rigidbody>();
@@ -38,6 +41,6 @@ public class GrenadeController : MonoBehaviour
         rigid.AddForce( Camera.main.transform.forward * 30, ForceMode.Impulse);
         soundManager.PlaySound(0);
         yield return new WaitForSeconds(5f);
-        canThrow = true;
+        
     }
 }
