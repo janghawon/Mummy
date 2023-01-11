@@ -7,21 +7,38 @@ public class Enemy : EnemyBase
 {
     public EnemyHP enemyHP;
     bool getBar;
-    int HPnum;
+    EnemySpawner enemySpawner;
+
     private void Awake()
     {
-        HPnum = numnum;
+        enemySpawner = FindObjectOfType<EnemySpawner>();
     }
+    private void Start()
+    {
+        enemyHP = GameObject.Find($"EnmyHpBar(Clone){enemySpawner.num - 1}").GetComponent<EnemyHP>();
+    }
+
     public override void GetDamage(float damageShame)
     {
         
-        DamageConvey(damageShame, HPnum);
+        DamageConvey(damageShame);
     }
-    void DamageConvey(float damageShame, int HPnum)
+    void DamageConvey(float damageShame)
     {
-        enemyHP = GameObject.Find("UICanvas").transform.Find($"EnmyHpBar(Clone){HPnum}").GetComponent<EnemyHP>();
         getBar = true;
-        enemyHP.GetDamage(damageShame);
+        try
+        {
+            enemyHP.GetDamage(damageShame);
+            if (enemyHP.enemyCurrentHP <= 0)
+            {
+                Destroy(enemyHP.gameObject);
+                Destroy(this.gameObject);
+            }
+        }
+        catch
+        {
+            Debug.Log("그만해! 적은 이미 죽었어!");
+        }
     }
     private void Update()
     {

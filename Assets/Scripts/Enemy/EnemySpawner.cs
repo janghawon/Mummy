@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public List<GameObject> EnemyContainer = new List<GameObject>();
-    int num;
+    public int num;
     public void SpawnEnemy(int enemyNum)
     {
         float randomX = Random.Range(-50, 43);
         float randomZ = Random.Range(-50, 43);
         GameObject enemy = Instantiate(EnemyContainer[enemyNum]);
         EnemyBase eb = enemy.GetComponent<EnemyBase>();
+        Debug.Log(num);
         eb.SetHpBar(num);
         enemy.transform.position = new Vector3(randomX, 8, randomZ);
         num++;

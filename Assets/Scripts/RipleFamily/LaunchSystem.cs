@@ -10,13 +10,18 @@ public class LaunchSystem : MonoBehaviour
     public GameObject ParticlePrefab;
     Grenade targetGrenade;
     [SerializeField]
-    
+    ReBound reBound;
+
+    private void Awake()
+    {
+        reBound = FindObjectOfType<ReBound>();
+    }
 
 
 
     public void LaunchBullet()
     {
-        
+        reBound.Shake(2, 2, 0.1f);
         if(Physics.Raycast(camera.transform.position, camera.transform.forward, out hitInfo, 300))
         {
             Debug.Log("??");

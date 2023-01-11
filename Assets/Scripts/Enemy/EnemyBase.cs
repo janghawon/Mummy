@@ -7,11 +7,21 @@ using UnityEngine.UI;
 public class EnemyBase : MonoBehaviour
 {
     public GameObject HPPrefab;
-    public Vector3 hpBarOffset = new Vector3(0, 200f, 0);
-
     public Canvas enemyHpBarCanvas;
     public int numnum;
-    
+
+    public enum enemyState
+    {
+        Idle,
+        Walk,
+        Attack
+    }
+
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         

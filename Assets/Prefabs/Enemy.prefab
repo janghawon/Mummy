@@ -129,6 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPPrefab: {fileID: 3869127289966103852, guid: f4cdadf2e678ef34a9284ecd087c1fc0,
     type: 3}
-  hpBarOffset: {x: 0, y: 200, z: 0}
   enemyHpBarCanvas: {fileID: 0}
+  numnum: 0
   enemyHP: {fileID: 0}
+  maxHP: 100
+  currentHP: 0

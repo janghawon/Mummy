@@ -54,8 +54,8 @@ public class EnemyHP : MonoBehaviour
         }
         else if (enemyCurrentHP <= 0)
         {
-            
-            isAlive = false;
+
+            Destroy(this.gameObject, 0.4f);
             
         }
     }

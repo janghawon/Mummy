@@ -9,6 +9,7 @@ public class CrossMark : MonoBehaviour
     private Canvas canvas;
     private RectTransform rectParent;
     private RectTransform rectHP;
+    public Vector2 PlusVec = new Vector2(0, 5);
 
     public Transform enemyTransform;
     private void Awake()
@@ -26,13 +27,20 @@ public class CrossMark : MonoBehaviour
     }
     private void Update()
     {
-        var screenPos = Camera.main.WorldToScreenPoint(enemyTransform.position);
-        if (screenPos.z < 0f)
+        try
         {
-            screenPos *= -1f;
+            var screenPos = Camera.main.WorldToScreenPoint(enemyTransform.position);
+            if (screenPos.z < 0f)
+            {
+                screenPos *= -1f;
+            }
+            var localPos = new Vector2(0, 20);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(rectParent, screenPos, uiCamera, out localPos);
+            rectHP.localPosition = localPos;
         }
-        var localPos = new Vector2(0, 20);
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectParent, screenPos, uiCamera, out localPos);
-        rectHP.localPosition = localPos;
+        catch
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -10,24 +10,26 @@ public class UltimateSkill : MonoBehaviour
     public Canvas ultimateSkillCanvas;
     public GameObject crossPrefab;
     public Image UltimateScrren;
+    UltimateTimer timer;
 
     public Collider[] detectedColls;
     public List<GameObject> onScreenEnemy = new List<GameObject>();
     private RectTransform screen_Rect;
-    bool isUltimate;
+    public bool isUltimate;
     float fadeCount;
     // Start is called before the first frame update
     private void Awake()
     {
         bulletSystem = FindObjectOfType<BulletSystem>();
         UltimateScrren = GameObject.Find("Ultimate_Screen").GetComponent<Image>();
-        UltimateScrren.enabled = false;
+        timer = FindObjectOfType<UltimateTimer>();
         screen_Rect = UltimateScrren.GetComponent<RectTransform>();
         fadeCount = 0;
 
     }
     void Start()
     {
+        UltimateScrren.gameObject.SetActive(false);
         StartCoroutine(Tick());
         screen_Rect.sizeDelta = new Vector2(1920f, 310f);
         UltimateScrren.color = new Color(1, 1, 1, fadeCount);
@@ -51,11 +53,32 @@ public class UltimateSkill : MonoBehaviour
         bulletSystem.useUltimate = true;
         bulletSystem.bulletCountText.text = "∞";
         bulletSystem.atkCool = 0.1f;
-        UltimateScrren.enabled = true;
+        bulletSystem.bulletCount = 1;
+        bulletSystem.canReload = false;
+        UltimateScrren.gameObject.SetActive(true);
         isUltimate = true;
         StartCoroutine(UseSkill());
         StartCoroutine(UseSkill2());
         StartCoroutine(UltimateSystem());
+    }
+    public void OffUltimateSkill()
+    {
+        bulletSystem.useUltimate = false;
+        bulletSystem.bulletCountText.text = bulletSystem.bulletCount.ToString() + " / 10";
+        bulletSystem.atkCool = 0.3f;
+        bulletSystem.canReload = true;
+        isUltimate = false;
+        StartCoroutine(OffUlSkill());
+    }
+    IEnumerator OffUlSkill()
+    {
+        while (fadeCount > 0)
+        {
+            fadeCount -= 0.1f;
+            UltimateScrren.color = new Color(1, 1, 1, fadeCount);
+            yield return new WaitForSeconds(0.05f);
+        }
+        UltimateScrren.gameObject.SetActive(false);
     }
     IEnumerator UltimateSystem()
     {
@@ -67,7 +90,14 @@ public class UltimateSkill : MonoBehaviour
                 GameObject crossMark = Instantiate(crossPrefab, ultimateSkillCanvas.transform);
 
                 var _crossMark = crossMark.GetComponent<CrossMark>();
-                _crossMark.enemyTransform = onScreenEnemy[i].gameObject.transform;
+                try
+                {
+                    _crossMark.enemyTransform = onScreenEnemy[i].gameObject.transform;
+                }
+                catch
+                {
+                    Debug.Log("할당 실패");
+                }
             }
         }
         yield return new WaitForSeconds(0.5f);
@@ -79,6 +109,7 @@ public class UltimateSkill : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Q))
         {
             UseUltimateSkill();
+            timer.one = true;
         }
         
             
@@ -87,7 +118,7 @@ public class UltimateSkill : MonoBehaviour
     {
         while (isUltimate)
         {
-            screen_Rect.sizeDelta = new Vector2(1920, Mathf.Lerp(screen_Rect.sizeDelta.y, 1080f, Time.deltaTime * 10));
+            screen_Rect.sizeDelta = new Vector2(1920, Mathf.Lerp(screen_Rect.sizeDelta.y, 1080f, Time.deltaTime * 15));
             
             yield return null;
         }

@@ -13,6 +13,7 @@ public class BulletSystem : MonoBehaviour
     bool canAtk;
     public float atkCool;
     public bool useUltimate;
+    public bool canReload;
     private void Awake()
     {
         afterImage = FindObjectOfType<AfterImage>();
@@ -20,6 +21,7 @@ public class BulletSystem : MonoBehaviour
         bulletCountText = GameObject.Find("BulletCount").GetComponent<TextMeshProUGUI>();
         gun = GetComponent<GunSoundContainer>();
         atkCool = 0.3f;
+        canReload = true;
     }
     private void Start()
     {
@@ -63,7 +65,8 @@ public class BulletSystem : MonoBehaviour
     }
     public void ReLoad()
     {
-        StartCoroutine(BulletReLoad());
+        if(canReload)
+             StartCoroutine(BulletReLoad());
     }
     IEnumerator BulletReLoad()
     {
