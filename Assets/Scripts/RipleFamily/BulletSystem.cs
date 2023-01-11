@@ -8,17 +8,18 @@ public class BulletSystem : MonoBehaviour
     AfterImage afterImage;
     LaunchSystem launchSystem;
     GunSoundContainer gun;
-    TextMeshProUGUI bulletCountText;
+    public TextMeshProUGUI bulletCountText;
     public int bulletCount;
     bool canAtk;
     public float atkCool;
+    public bool useUltimate;
     private void Awake()
     {
         afterImage = FindObjectOfType<AfterImage>();
         launchSystem = GetComponent<LaunchSystem>();
         bulletCountText = GameObject.Find("BulletCount").GetComponent<TextMeshProUGUI>();
         gun = GetComponent<GunSoundContainer>();
-        atkCool = 0.5f;
+        atkCool = 0.3f;
     }
     private void Start()
     {
@@ -42,9 +43,11 @@ public class BulletSystem : MonoBehaviour
     {
         if(bulletCount > 0 && canAtk)
         {
-            
-            bulletCount--;
-            bulletCountText.text = bulletCount.ToString() + " / 10";
+            if(!useUltimate)
+            {
+                bulletCount--;
+                bulletCountText.text = bulletCount.ToString() + " / 10";
+            }
             launchSystem.LaunchBullet();
             afterImage.MakeAfterImage();
             gun.PlaySound(0);
@@ -67,7 +70,7 @@ public class BulletSystem : MonoBehaviour
         canAtk = false;
         while(bulletCount < 10)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             bulletCount++;
             bulletCountText.text = bulletCount.ToString() + " / 10"; 
             //장전소리

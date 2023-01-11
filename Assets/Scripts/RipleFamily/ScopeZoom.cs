@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class ScopeZoom : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    float normalCameraAngle = 60f;
+    bool zoom;
     void Update()
     {
-        
+        if(Input.GetMouseButton(2))
+        {
+            Debug.Log("»£√‚µ ");
+            while(Camera.main.fieldOfView > 30)
+            {
+                Debug.Log("¿€µø µ ");
+                Camera.main.fieldOfView -= 10 * Time.deltaTime;
+            }
+            
+        }
+        else
+        {
+            
+        }
     }
 }

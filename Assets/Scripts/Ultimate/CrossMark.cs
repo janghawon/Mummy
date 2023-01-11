@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CrossMark : MonoBehaviour
 {
@@ -18,7 +19,12 @@ public class CrossMark : MonoBehaviour
         rectHP = this.gameObject.GetComponent<RectTransform>();
         
     }
-    private void LateUpdate()
+    private void Start()
+    {
+        transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+        Destroy(this.gameObject, 0.5f);
+    }
+    private void Update()
     {
         var screenPos = Camera.main.WorldToScreenPoint(enemyTransform.position);
         if (screenPos.z < 0f)

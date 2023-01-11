@@ -10,14 +10,14 @@ public class LaunchSystem : MonoBehaviour
     public GameObject ParticlePrefab;
     Grenade targetGrenade;
     [SerializeField]
-    LayerMask layerMask;
+    
 
 
 
     public void LaunchBullet()
     {
         
-        if(Physics.Raycast(camera.transform.position, camera.transform.forward, out hitInfo, 300, layerMask))
+        if(Physics.Raycast(camera.transform.position, camera.transform.forward, out hitInfo, 300))
         {
             Debug.Log("??");
             GameObject particle = Instantiate(ParticlePrefab, hitInfo.point, Quaternion.LookRotation(hitInfo.normal));

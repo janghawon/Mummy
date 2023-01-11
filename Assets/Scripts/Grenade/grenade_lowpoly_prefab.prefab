@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1415556611663978}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: -1.9353158e-17}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbf2b8e9df3ff14c86f8b686092ffc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectedColls: []
   explosionEffectPrefab: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
     type: 3}
   fireEffectPrefab: {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
