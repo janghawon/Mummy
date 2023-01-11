@@ -7,13 +7,19 @@ public class Enemy : EnemyBase
 {
     public EnemyHP enemyHP;
     bool getBar;
+    int HPnum;
+    private void Awake()
+    {
+        HPnum = numnum;
+    }
     public override void GetDamage(float damageShame)
     {
-        DamageConvey(damageShame);
+        
+        DamageConvey(damageShame, HPnum);
     }
-    void DamageConvey(float damageShame)
+    void DamageConvey(float damageShame, int HPnum)
     {
-        enemyHP = transform.Find("EnemyHpCanvas").Find("EnmyHpBar(Clone)").GetComponent<EnemyHP>();
+        enemyHP = GameObject.Find("UICanvas").transform.Find($"EnmyHpBar(Clone){HPnum}").GetComponent<EnemyHP>();
         getBar = true;
         enemyHP.GetDamage(damageShame);
     }

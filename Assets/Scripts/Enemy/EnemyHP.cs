@@ -18,7 +18,7 @@ public class EnemyHP : MonoBehaviour
     public bool isAlive;
     private void Awake()
     {
-        canvas = GetComponentInParent<Canvas>();
+        canvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
         uiCamera = canvas.worldCamera;
         rectParent = canvas.GetComponent<RectTransform>();
         rectHP = this.gameObject.GetComponent<RectTransform>();
