@@ -36,8 +36,8 @@ TagManager:
   - Invisible Wall
   - Projectile
   - Fire
-  - 
-  - 
+  - UiLayer
+  - AimUiLayer
   - 
   - 
   - 
@@ -54,4 +54,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: AimUI
+    uniqueID: 2934208671
+    locked: 0
+  - name: NormalUI
+    uniqueID: 4262168815
     locked: 0
