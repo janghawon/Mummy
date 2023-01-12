@@ -14,9 +14,10 @@ public class EnemyBase : MonoBehaviour
     {
         Idle,
         Walk,
-        Attack
+        Attack,
+        Dead
     }
-
+    enemyState state;
     private void Awake()
     {
         
@@ -26,7 +27,18 @@ public class EnemyBase : MonoBehaviour
     {
         
     }
+    private void Update()
+    {
+        
+        
+        Walk();
+        
+    }
 
+    public virtual void Walk()
+    {
+
+    }
     public void SetHpBar(int num)
     {
         numnum = num;

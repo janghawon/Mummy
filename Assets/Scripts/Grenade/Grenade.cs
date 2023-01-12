@@ -53,7 +53,7 @@ public class Grenade : MonoBehaviour
     private void CalDamage(float damage)
     {
         detectedColls = Physics.OverlapSphere(this.transform.position, 10f); //Àû °¨Áö
-        Debug.Log("¿¨?");
+        
         foreach(Collider target in detectedColls)
         {
             if(target.gameObject.GetComponent<EnemyBase>())

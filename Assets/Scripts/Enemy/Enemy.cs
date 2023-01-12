@@ -5,14 +5,21 @@ using UnityEngine.UI;
 
 public class Enemy : EnemyBase
 {
+    WaveSystem waveSystem;
     public EnemyHP enemyHP;
     bool getBar;
     EnemySpawner enemySpawner;
     PerecentManager percentManager;
+    PlayerController player;
+    //Transform playerTransform;
+
     private void Awake()
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
         percentManager = FindObjectOfType<PerecentManager>();
+        player = FindObjectOfType<PlayerController>();
+        waveSystem = FindObjectOfType<WaveSystem>();
+        //playerTransform = player.gameObject.GetComponent<Transform>();
     }
     private void Start()
     {
@@ -32,6 +39,7 @@ public class Enemy : EnemyBase
             enemyHP.GetDamage(damageShame);
             if (enemyHP.enemyCurrentHP <= 0)
             {
+                waveSystem.enemyCounter.Remove(this.gameObject);
                 Destroy(enemyHP.gameObject);
                 Destroy(this.gameObject);
             }
@@ -41,8 +49,11 @@ public class Enemy : EnemyBase
             Debug.Log("그만해! 적은 이미 죽었어!");
         }
     }
-    private void Update()
+
+    public override void Walk()
     {
-      
+        
+        transform.LookAt(player.gameObject.transform.position);
+        transform.position = Vector3.MoveTowards(gameObject.transform.position, player.gameObject.transform.position, 0.005f);
     }
 }

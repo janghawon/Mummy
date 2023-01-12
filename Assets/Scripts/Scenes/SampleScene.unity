@@ -2345,7 +2345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyContainer:
-  - {fileID: 2100708984175348794, guid: e07003ec6a190a84cab3d0f82712d8f1, type: 3}
+  - {fileID: 7133418529632889813, guid: eec2c1277d34ac045b8219c44808b335, type: 3}
   num: 0
 --- !u!1 &1124580055
 GameObject:
@@ -2463,7 +2463,7 @@ MonoBehaviour:
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
-  m_FrequencyGain: -64
+  m_FrequencyGain: -60
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &1124773924
 MonoBehaviour:
