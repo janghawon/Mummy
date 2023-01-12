@@ -5,40 +5,58 @@ using Cinemachine;
 
 public class Zoom : MonoBehaviour
 {
+    [SerializeField] private Camera camera;
     [SerializeField] float zoomSpeed = 0;
-    [SerializeField] float zoomMax = 0;
-    [SerializeField] float zoomMin = 0;
-
-    void CameraZoom()
+    [SerializeField] float zoomMax = 4;
+    [SerializeField] float zoomMin = 60;
+    [SerializeField] private float cameraViewShame;
+    private void Awake()
     {
-        float t_zoomDirection = Input.GetAxis("Mouse ScrollWheel");
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+    }
+    private void Start()
+    {
+        camera.fieldOfView = 60;
+        zoomMax = 10;
+        zoomMin = 60;
+        cameraViewShame = camera.fieldOfView;
+    }
 
-        if (transform.position.y <= zoomMax && t_zoomDirection > 0)
+    IEnumerator CameraZoom()
+    {
+        while(camera.fieldOfView > zoomMax)
         {
-            Debug.Log(2);
-            return;
-        }
-        else
-        {
-            Debug.Log(2.1);
-        }
 
-        if (transform.position.y >= zoomMin && t_zoomDirection < 0)
-        {
-            Debug.Log(3);
-            return;
+            camera.fieldOfView -= 1;
+            yield return new WaitForSeconds(0.1f);
         }
-        else
+    }
+    IEnumerator CameraZoomOut()
+    {
+        while(camera.fieldOfView < zoomMin)
         {
-            Debug.Log(3.1);
+            camera.fieldOfView += 1;
+            yield return new WaitForSeconds(0.1f);
         }
-            
-
-        transform.position += transform.forward * t_zoomDirection * zoomSpeed;
     }
 
     private void Update()
     {
-        CameraZoom();
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log(cameraViewShame);
+        }
+        
+        if (Input.GetMouseButton(1))
+        {
+            
+            StartCoroutine(CameraZoom());
+        }
+        else
+        {
+            StartCoroutine(CameraZoomOut());
+            
+        }
     }
+    
 }
