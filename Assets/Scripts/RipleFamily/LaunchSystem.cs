@@ -11,10 +11,11 @@ public class LaunchSystem : MonoBehaviour
     Grenade targetGrenade;
     [SerializeField]
     ReBound reBound;
-
+    
     private void Awake()
     {
         reBound = FindObjectOfType<ReBound>();
+        
     }
 
 

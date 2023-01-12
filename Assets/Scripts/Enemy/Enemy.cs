@@ -8,10 +8,11 @@ public class Enemy : EnemyBase
     public EnemyHP enemyHP;
     bool getBar;
     EnemySpawner enemySpawner;
-
+    PerecentManager percentManager;
     private void Awake()
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
+        percentManager = FindObjectOfType<PerecentManager>();
     }
     private void Start()
     {
@@ -20,8 +21,8 @@ public class Enemy : EnemyBase
 
     public override void GetDamage(float damageShame)
     {
-        
         DamageConvey(damageShame);
+        percentManager.GetScore(damageShame);
     }
     void DamageConvey(float damageShame)
     {

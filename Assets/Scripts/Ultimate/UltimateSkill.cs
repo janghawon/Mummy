@@ -6,11 +6,13 @@ using DG.Tweening;
 
 public class UltimateSkill : MonoBehaviour
 {
+    
     public BulletSystem bulletSystem;
     public Canvas ultimateSkillCanvas;
     public GameObject crossPrefab;
     public Image UltimateScrren;
     UltimateTimer timer;
+    PerecentManager percentManager;
 
     public Collider[] detectedColls;
     public List<GameObject> onScreenEnemy = new List<GameObject>();
@@ -24,6 +26,7 @@ public class UltimateSkill : MonoBehaviour
         UltimateScrren = GameObject.Find("Ultimate_Screen").GetComponent<Image>();
         timer = FindObjectOfType<UltimateTimer>();
         screen_Rect = UltimateScrren.GetComponent<RectTransform>();
+        percentManager = FindObjectOfType<PerecentManager>();
         fadeCount = 0;
 
     }
@@ -79,6 +82,9 @@ public class UltimateSkill : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         UltimateScrren.gameObject.SetActive(false);
+        percentManager.canUseUltimateSkill = false;
+        percentManager.percentCircle.fillAmount = 0;
+        percentManager.timeAndScore = 0;
     }
     IEnumerator UltimateSystem()
     {
@@ -106,8 +112,9 @@ public class UltimateSkill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) && percentManager.canUseUltimateSkill)
         {
+            
             UseUltimateSkill();
             timer.one = true;
         }
