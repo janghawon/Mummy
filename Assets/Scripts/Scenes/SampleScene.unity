@@ -2613,7 +2613,7 @@ MonoBehaviour:
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
-  m_FrequencyGain: -548
+  m_FrequencyGain: -760
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &1124773924
 MonoBehaviour:
@@ -4109,7 +4109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906525257}
   m_Layer: 3
-  m_Name: GameObject
+  m_Name: PlayerPosition
   m_TagString: Untagged
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

@@ -9,9 +9,11 @@ public class ItemSystem : MonoBehaviour
     int randomItemSelecter;
     public LaunchSystem riple;
     public BulletSystem bullet;
+    DotDamItem
     public GameObject DropItem()
     {
         percentCal = Random.Range(0, 100);
+        Debug.Log(percentCal);
         if(percentCal < 5)
         {
             randomItemSelecter = Random.Range(0, 4);
