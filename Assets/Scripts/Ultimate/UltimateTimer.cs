@@ -37,13 +37,17 @@ public class UltimateTimer : MonoBehaviour
         else
         {
             time = 0;
-            one = true;
+            
         }
 
         if (ultimateTimer.value <= 0 && one)
         {
-            ultimateSkill.OffUltimateSkill();
+            
+            ultimateSkill.isUltimate = false;
             one = false;
+            ultimateSkill.OffUltimateSkill();
+            Debug.Log(ultimateTimer.value);
+            
         }
 
     }

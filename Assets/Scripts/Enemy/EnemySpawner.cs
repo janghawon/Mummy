@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
             float randomZ = Random.Range(-50, 43);
             GameObject enemy = Instantiate(EnemyContainer[0]);
             EnemyBase eb = enemy.GetComponent<EnemyBase>();
-            Debug.Log(num);
+            
             eb.SetHpBar(num);
             enemy.transform.position = new Vector3(randomX, 8, randomZ);
             num++;

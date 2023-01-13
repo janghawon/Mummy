@@ -61,6 +61,11 @@ public class Grenade : MonoBehaviour
                 EnemyBase targetEnemy = target.GetComponent<EnemyBase>();
                 targetEnemy.GetDamage(damage);
             }
+            if(target.gameObject.GetComponent<PlayerHP>())
+            {
+                PlayerHP player = target.GetComponent<PlayerHP>();
+                player.GetDamage(80);
+            }
         }
     }
 }

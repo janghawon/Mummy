@@ -79,7 +79,7 @@ public class BulletSystem : MonoBehaviour
             //장전소리
             gun.PlaySound(1);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canAtk = true;
     }
 }

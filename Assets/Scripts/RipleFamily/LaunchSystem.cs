@@ -11,13 +11,16 @@ public class LaunchSystem : MonoBehaviour
     Grenade targetGrenade;
     [SerializeField]
     ReBound reBound;
-    
+    public float attackDamage;
     private void Awake()
     {
         reBound = FindObjectOfType<ReBound>();
         
     }
-
+    private void Start()
+    {
+        attackDamage = 20f;
+    }
 
 
     public void LaunchBullet()
@@ -37,7 +40,7 @@ public class LaunchSystem : MonoBehaviour
             {
                 EnemyBase targetEnemy = hitInfo.collider.gameObject.GetComponent<EnemyBase>();
                 Debug.Log(targetEnemy);
-                targetEnemy.GetDamage(20f);
+                targetEnemy.GetDamage(attackDamage);
                 
             }
             Destroy(particle, 2f);

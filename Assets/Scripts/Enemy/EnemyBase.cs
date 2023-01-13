@@ -29,10 +29,7 @@ public class EnemyBase : MonoBehaviour
     }
     private void Update()
     {
-        
-        
         Walk();
-        
     }
 
     public virtual void Walk()

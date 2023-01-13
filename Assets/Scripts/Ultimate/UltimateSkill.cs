@@ -55,7 +55,7 @@ public class UltimateSkill : MonoBehaviour
     {
         bulletSystem.useUltimate = true;
         bulletSystem.bulletCountText.text = "∞";
-        bulletSystem.atkCool = 0.1f;
+        bulletSystem.atkCool -= 0.2f;
         bulletSystem.bulletCount = 1;
         bulletSystem.canReload = false;
         UltimateScrren.gameObject.SetActive(true);
@@ -66,9 +66,10 @@ public class UltimateSkill : MonoBehaviour
     }
     public void OffUltimateSkill()
     {
+        Debug.Log("몇번일까");
         bulletSystem.useUltimate = false;
         bulletSystem.bulletCountText.text = bulletSystem.bulletCount.ToString() + " / 10";
-        bulletSystem.atkCool = 0.3f;
+        bulletSystem.atkCool += 0.2f;
         bulletSystem.canReload = true;
         isUltimate = false;
         StartCoroutine(OffUlSkill());

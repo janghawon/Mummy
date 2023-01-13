@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,9 @@ public class Enemy : EnemyBase
     EnemySpawner enemySpawner;
     PerecentManager percentManager;
     PlayerController player;
+    PlayerHP playerHP;
+    public bool canAtk;
+    ItemSystem itemSystem;
     //Transform playerTransform;
 
     private void Awake()
@@ -19,11 +23,33 @@ public class Enemy : EnemyBase
         percentManager = FindObjectOfType<PerecentManager>();
         player = FindObjectOfType<PlayerController>();
         waveSystem = FindObjectOfType<WaveSystem>();
+        playerHP = FindObjectOfType<PlayerHP>();
+        itemSystem = FindObjectOfType<ItemSystem>();
         //playerTransform = player.gameObject.GetComponent<Transform>();
     }
     private void Start()
     {
         enemyHP = GameObject.Find($"EnmyHpBar(Clone){enemySpawner.num - 1}").GetComponent<EnemyHP>();
+        canAtk = true;
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Attack());
+        }
+        
+    }
+
+    IEnumerator Attack()
+    {
+        if(canAtk)
+        {
+            canAtk = false;
+            playerHP.playerCurrentHP -= 5;
+            yield return new WaitForSeconds(2f);
+            canAtk = true;
+        }
     }
 
     public override void GetDamage(float damageShame)
@@ -40,6 +66,10 @@ public class Enemy : EnemyBase
             if (enemyHP.enemyCurrentHP <= 0)
             {
                 waveSystem.enemyCounter.Remove(this.gameObject);
+
+                GameObject dropItem = Instantiate(itemSystem.DropItem());
+                dropItem.transform.position = this.gameObject.transform.position;
+
                 Destroy(enemyHP.gameObject);
                 Destroy(this.gameObject);
             }

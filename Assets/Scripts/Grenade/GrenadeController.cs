@@ -23,6 +23,7 @@ public class GrenadeController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F) && canThrow)
         {
+            
             StartCoroutine(ThrowGrenade());
             coolTime.StartCountCoolMethod();
         }
