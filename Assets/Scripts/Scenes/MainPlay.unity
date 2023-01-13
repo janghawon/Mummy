@@ -2613,7 +2613,7 @@ MonoBehaviour:
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
-  m_FrequencyGain: -760
+  m_FrequencyGain: -1280
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &1124773924
 MonoBehaviour:
@@ -4532,10 +4532,15 @@ MonoBehaviour:
   - {fileID: 1403920136059015001, guid: 2d4363a6ba0901147988c23f80f0ca12, type: 3}
   - {fileID: 3520637638931844714, guid: 42f712ec4bbdfcd4c9925fe4568f05b2, type: 3}
   - {fileID: 7254302768176079527, guid: 073d2c4516917fa4cb21c403cfce1dec, type: 3}
-  - {fileID: 1403920136059015001, guid: 2d4363a6ba0901147988c23f80f0ca12, type: 3}
+  - {fileID: 8117141465073332248, guid: d132afa8fa0792c42ab0a84167161e59, type: 3}
   - {fileID: 5215997030023430725, guid: 1e123784cab05e24d86156a0046be112, type: 3}
   riple: {fileID: 0}
   bullet: {fileID: 0}
+  playerPosition: {fileID: 0}
+  rangeInEnemy: []
+  effectPrefab: {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845,
+    type: 3}
+  canDeal: 0
 --- !u!4 &2100540986
 Transform:
   m_ObjectHideFlags: 0

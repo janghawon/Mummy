@@ -98,6 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e2ec06b0f0611419f2316ad7774806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
+  riple: {fileID: 0}
+  player: {fileID: 0}
+  playerPosition: {fileID: 0}
+  rangeInEnemy: []
+  effectPrefab: {fileID: 1965343156803978, guid: aa8d6482d70a23445b4b2a928ed1b845,
+    type: 3}
+  canDeal: 0
 --- !u!54 &4342266163266859724
 Rigidbody:
   m_ObjectHideFlags: 0
