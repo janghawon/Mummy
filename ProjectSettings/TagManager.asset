@@ -58,6 +58,12 @@ TagManager:
   - name: AimUI
     uniqueID: 2934208671
     locked: 0
+  - name: NormalImage
+    uniqueID: 810353981
+    locked: 0
   - name: NormalUI
     uniqueID: 4262168815
+    locked: 0
+  - name: BlackScreen
+    uniqueID: 1452286299
     locked: 0

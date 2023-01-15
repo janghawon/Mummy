@@ -5,30 +5,29 @@ using UnityEngine.UI;
 
 public class MouseAim : MonoBehaviour
 {
-    //public Image aimImage;
-    public RectTransform cursurTransform;
+    
     AudioSource audio;
-
+    RectTransform mouse;
+    public bool canSound;
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
+        audio = GetComponentInChildren<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
+        canSound = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePos = Input.mousePosition;
-        cursurTransform.position = mousePos;
-        
-        if(Input.GetMouseButtonDown(0))
+       
+        if(Input.GetMouseButtonDown(0) && canSound)
         {
             audio.Play();
         }
 
+        //mouse.SetAsLastSibling();
     }
 }

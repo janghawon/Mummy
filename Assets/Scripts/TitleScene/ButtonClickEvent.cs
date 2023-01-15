@@ -1,18 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ButtonClickEvent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameManager gameManager;
+    GameObject settingCanvas;
+    private void Awake()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
+        settingCanvas = GameObject.Find("SettingCanvas");
+    }
+    public void GameStartButton()
+    {
+        gameManager.SceneProduction();
+        StartCoroutine(GameStart());
+    }
+    public void OptionButton()
+    {
+        settingCanvas.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator GameStart()
     {
-        
+        yield return new WaitForSeconds(1.2f);
+        gameManager.SceneLoad(gameManager.sceneList[1]);
     }
 }
