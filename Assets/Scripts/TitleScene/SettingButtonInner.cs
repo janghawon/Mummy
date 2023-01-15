@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SettingButtonInner : MonoBehaviour
 {
-    GameObject SettingCanvas;
+    GameManager gameManager;
     private void Awake()
     {
-        SettingCanvas = GameObject.Find("SettingCanvas");
+        gameManager = FindObjectOfType<GameManager>();
     }
     public void ExitSetting()
     {
-        SettingCanvas.SetActive(false);
+        GameObject SettingCanvas = GameObject.Find("SettingCanvas(Clone)");
+        Destroy(SettingCanvas);
     }
 }

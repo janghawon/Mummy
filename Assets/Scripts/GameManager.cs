@@ -9,12 +9,14 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public List<GameObject> nextScenePrefab = new List<GameObject>();
     public List<string> sceneList = new List<string>();
+    GameObject BlackScreenCanvas;
+    GameObject optionCanvas;
 
     public float effectSoundValue = 0.5f;
     public float bgmSoundValue = 0.5f;
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -27,17 +29,27 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    public void SceneProduction()
+    public void SceneProduction(string name)
     {
-        GameObject BlackScreenCanvas = Instantiate(nextScenePrefab[0]);
+        switch (name)
+        {
+            case "next":
+                BlackScreenCanvas = Instantiate(nextScenePrefab[0]);
+                break;
+            case "option":
+                optionCanvas = Instantiate(nextScenePrefab[1]);
+                break;
+
+
+        }
     }
     public void SceneLoad(string sceneName)
     {

@@ -15,12 +15,12 @@ public class ButtonClickEvent : MonoBehaviour
     }
     public void GameStartButton()
     {
-        gameManager.SceneProduction();
+        gameManager.SceneProduction("next");
         StartCoroutine(GameStart());
     }
     public void OptionButton()
     {
-        settingCanvas.SetActive(true);
+        gameManager.SceneProduction("option");
     }
 
     IEnumerator GameStart()
