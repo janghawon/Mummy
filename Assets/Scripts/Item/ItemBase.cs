@@ -18,6 +18,7 @@ public class ItemBase : MonoBehaviour
     private void Start()
     {
         Rotate();
+        Destroy(this.gameObject, 10f);
     }
     void Rotate()
     {

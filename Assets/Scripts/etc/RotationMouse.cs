@@ -12,13 +12,23 @@ public class RotationMouse : MonoBehaviour
     private float eulerAngX;
     private float eulerAngY;
 
+    public bool canRotationMouse;
+    private void Start()
+    {
+        canRotationMouse = true;
+    }
+
     public void UpdateRotate(float mouseX, float mouseY)
     {
-        eulerAngY += mouseX * camYSpeed;
-        eulerAngX -= mouseY * camXSpeed;
+        if(canRotationMouse)
+        {
+            eulerAngY += mouseX * camYSpeed;
+            eulerAngX -= mouseY * camXSpeed;
 
-        eulerAngX = ClampAngle(eulerAngX, limitMinX, limitMaxX);
-        transform.rotation = Quaternion.Euler(eulerAngX, eulerAngY, 0);
+            eulerAngX = ClampAngle(eulerAngX, limitMinX, limitMaxX);
+            transform.rotation = Quaternion.Euler(eulerAngX, eulerAngY, 0);
+        }
+       
     }
     private float ClampAngle(float angle, float min, float max)
     {

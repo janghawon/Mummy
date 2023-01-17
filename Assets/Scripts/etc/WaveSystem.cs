@@ -15,10 +15,13 @@ public class WaveSystem : MonoBehaviour
 
     [Header("웨이브 수를 표시할 컴포넌트와 함수들")]
     TextMeshProUGUI waveText;
+
+    GameManager gm;
     private void Awake()
     {
         enemySpawner = FindObjectOfType<EnemySpawner>();
         waveText = GameObject.Find("WaveText").GetComponent<TextMeshProUGUI>();
+        gm = FindObjectOfType<GameManager>();
     }
     private void Start()
     {
@@ -44,6 +47,7 @@ public class WaveSystem : MonoBehaviour
     }
     private void EnemySpawn()
     {
+        gm.clearWave = waveNum;
         int enemyNum = 1;
         if(waveNum < 10)
             enemyNum = waveNum * 2;

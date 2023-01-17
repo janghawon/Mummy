@@ -13,7 +13,7 @@ public class GameOverManager : MonoBehaviour
         pannelTransform = overPannel.GetComponent<RectTransform>();
     }
     
-    // Update is called once per frame
+    
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -24,7 +24,7 @@ public class GameOverManager : MonoBehaviour
     }
     public void YesBtn()
     {
-
+        Application.Quit();
     }
     public void NoBtn()
     {

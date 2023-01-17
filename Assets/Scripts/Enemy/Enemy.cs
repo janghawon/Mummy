@@ -15,6 +15,7 @@ public class Enemy : EnemyBase
     PlayerHP playerHP;
     public bool canAtk;
     ItemSystem itemSystem;
+    GameManager gm;
     //Transform playerTransform;
 
     private void Awake()
@@ -25,6 +26,7 @@ public class Enemy : EnemyBase
         waveSystem = FindObjectOfType<WaveSystem>();
         playerHP = FindObjectOfType<PlayerHP>();
         itemSystem = FindObjectOfType<ItemSystem>();
+        gm = FindObjectOfType<GameManager>();
         //playerTransform = player.gameObject.GetComponent<Transform>();
     }
     private void Start()
@@ -65,6 +67,8 @@ public class Enemy : EnemyBase
             enemyHP.GetDamage(damageShame);
             if (enemyHP.enemyCurrentHP <= 0)
             {
+                gm.killEnemyNum++;
+
                 waveSystem.enemyCounter.Remove(this.gameObject);
 
                 GameObject dropItem = Instantiate(itemSystem.DropItem());

@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
+    
+
+    [Header("±Â±Â")]
     public static GameManager instance;
     public List<GameObject> nextScenePrefab = new List<GameObject>();
     public List<string> sceneList = new List<string>();
     GameObject BlackScreenCanvas;
     GameObject optionCanvas;
+
+    public int killEnemyNum;
+    public int clearWave;
 
     public float effectSoundValue = 0.5f;
     public float bgmSoundValue = 0.5f;
@@ -25,18 +33,15 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
 
+        string savePath = Application.dataPath + "/SaveFile.txt";
+        if(!File.Exists(savePath))
+        {
+            File.Create(savePath);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
     public void SceneProduction(string name)
     {
         switch (name)
