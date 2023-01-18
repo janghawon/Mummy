@@ -24,15 +24,15 @@ public class Rank : MonoBehaviour
         {
             spriteRenderer.sprite = rankContainer[0];
         }
-        else if(score >= 10 && score < 40)
+        else if(score >= 10 && score < 70)
         {
             spriteRenderer.sprite = rankContainer[1];
         }
-        else if(score >= 40 && score <= 80)
+        else if(score >= 70 && score <= 400)
         {
             spriteRenderer.sprite = rankContainer[2];
         }
-        else if(score > 80)
+        else if(score > 400)
         {
             spriteRenderer.sprite = rankContainer[3];
         }

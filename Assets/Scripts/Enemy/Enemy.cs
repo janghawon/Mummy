@@ -84,6 +84,7 @@ public class Enemy : EnemyBase
         }
     }
 
+
     public override void Walk()
     {
         

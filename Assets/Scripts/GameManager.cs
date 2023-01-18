@@ -52,6 +52,9 @@ public class GameManager : MonoBehaviour
             case "option":
                 optionCanvas = Instantiate(nextScenePrefab[1]);
                 break;
+            case "help":
+                optionCanvas = Instantiate(nextScenePrefab[2]);
+                break;
 
 
         }

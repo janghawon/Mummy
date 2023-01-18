@@ -106,4 +106,9 @@ public class SettingButtonInner : MonoBehaviour
         }
         Destroy(SettingCanvas);
     }
+
+    public void OnHelp()
+    {
+        gameManager.SceneProduction("help");
+    }
 }

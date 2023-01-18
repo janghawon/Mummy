@@ -56,8 +56,8 @@ public class ScoreCalculator : MonoBehaviour
         startCal = true;
         yield return new WaitForSeconds(0.05f);
         scoreText.text = "Score : " + CalScore();
-        waveText.text = "Clear Wave : ";//+ gameManager.clearWave.ToString();
-        killEnemyText.text = "Kill Enemy : ";// + gameManager.killEnemyNum.ToString();
+        waveText.text = "Clear Wave : " + gameManager.clearWave.ToString();
+        killEnemyText.text = "Kill Enemy : " + gameManager.killEnemyNum.ToString();
 
         string loadjson = File.ReadAllText(savePath);
         bestScoreData = JsonUtility.FromJson<BestScoreData>(loadjson);
@@ -65,7 +65,7 @@ public class ScoreCalculator : MonoBehaviour
         bestScoreText.text = "BestScore : " + bestScoreData.bestScore;
 
         yield return new WaitForSeconds(0.5f);
-        rankSystem.RateRankSystem(1);//gameManager.killEnemyNum);
+        rankSystem.RateRankSystem(gameManager.killEnemyNum);
 
         yield return new WaitForSeconds(0.5f);
         btnGroup.gameObject.SetActive(true);
@@ -75,6 +75,7 @@ public class ScoreCalculator : MonoBehaviour
         try
         {
             score = (gameManager.clearWave * gameManager.killEnemyNum) * 100;
+            Debug.Log(bestScoreData.bestScore);
             if (score > bestScoreData.bestScore)
             {
                 bestScoreData.bestScore = score;
